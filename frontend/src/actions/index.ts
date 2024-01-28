@@ -5,9 +5,11 @@ import axios from "axios";
 import * as _ from 'lodash';
 import { revalidatePath } from "next/cache";
 
+const ROOT_URL = process.env.ROOT_URL;
+
 export const loadData = async (): Promise<TEmployee[]> => {
     try {
-        const response = await axios.get("http://localhost:3000/employee");
+        const response = await axios.get(`${ROOT_URL}/employee`);
         console.log(response.data)
         return response.data || [];
     } catch (e) {
@@ -18,7 +20,7 @@ export const loadData = async (): Promise<TEmployee[]> => {
 
 export const getEmployee = async (id: string): Promise<TEmployee | null> => {
     try {
-        const response = await axios.get(`http://localhost:3000/employee/${id}`);
+        const response = await axios.get(`${ROOT_URL}/employee/${id}`);
         console.log(response.data)
         return response.data || [];
     } catch (e) {
@@ -56,7 +58,7 @@ export const saveNewEmployee = async (prevState: any, formData: FormData) => {
         if (!data.gender)
             return { item: "gender", message: "Gender is mandatory" }
 
-        const response = await axios.post(`http://localhost:3000/employee`, data);
+        const response = await axios.post(`${ROOT_URL}/employee`, data);
         console.log(response.data)
         revalidatePath('/')
         return { item: "done", message: "User Added" };
@@ -89,7 +91,7 @@ export const EditEmployee = async (prevState: any, data: TEmployee) => {
         if (!data.gender)
             return { item: "gender", message: "Gender is mandatory" }
 
-        const response = await axios.put(`http://localhost:3000/employee/${id}`, data);
+        const response = await axios.put(`${ROOT_URL}/employee/${id}`, data);
         console.log(response.data)
         revalidatePath('/')
         return { item: "done", message: "User Updated" };
@@ -101,7 +103,7 @@ export const EditEmployee = async (prevState: any, data: TEmployee) => {
 
 export const DeleteEmployee = async (id: string) => {
     try {
-        const response = await axios.delete(`http://localhost:3000/employee/${id}`);
+        const response = await axios.delete(`${ROOT_URL}/employee/${id}`);
         console.log(response.data)
         revalidatePath('/')
         return { item: "done", message: "User Updated" };

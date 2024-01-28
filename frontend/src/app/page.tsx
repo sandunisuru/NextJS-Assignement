@@ -30,9 +30,8 @@ export default async function Home({ searchParams }: { searchParams?: { [key: st
         {!isTable && (
           <Row>
             {employees.map((employee: TEmployee) => (
-              <Col className={styles.employeeCardWrapper} md={3}>
+              <Col className={styles.employeeCardWrapper} key={employee.id} md={3}>
                 <EmployeeCard
-                  key={employee.id}
                   {...employee}
                 />
               </Col>
