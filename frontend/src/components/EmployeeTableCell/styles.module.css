@@ -1,0 +1,15 @@
+.editButtonWrapper {
+    border-radius: 80px;
+    height: 45px;
+    margin-right: 5px;
+}
+
+.deleteButtonWrapper {
+    border-radius: 80px;
+    height: 45px;
+    margin-right: 5px;
+}
+
+.iconWrapper {
+    padding: 2px;
+}
