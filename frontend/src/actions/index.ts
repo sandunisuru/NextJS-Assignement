@@ -10,7 +10,6 @@ const ROOT_URL = process.env.ROOT_URL;
 export const loadData = async (): Promise<TEmployee[]> => {
     try {
         const response = await axios.get(`${ROOT_URL}/employee`);
-        console.log(response.data)
         return response.data || [];
     } catch (e) {
         console.log(e);
