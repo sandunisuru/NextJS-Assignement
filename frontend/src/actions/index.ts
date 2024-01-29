@@ -54,7 +54,7 @@ export const saveNewEmployee = async (prevState: any, formData: FormData) => {
         if (!data.gender)
             return { item: "gender", message: "Gender is mandatory" }
 
-        const response = await axios.post(`${ROOT_URL}/employee`, data);
+        await axios.post(`${ROOT_URL}/employee`, data);
         revalidatePath('/')
         return { item: "done", message: "User Added" };
     } catch (e: any) {
@@ -85,7 +85,7 @@ export const EditEmployee = async (prevState: any, data: TEmployee) => {
         if (!data.gender)
             return { item: "gender", message: "Gender is mandatory" }
 
-        const response = await axios.put(`${ROOT_URL}/employee/${id}`, data);
+        await axios.put(`${ROOT_URL}/employee/${id}`, data);
         revalidatePath('/')
         return { item: "done", message: "User Updated" };
     } catch (e: any) {
@@ -95,7 +95,7 @@ export const EditEmployee = async (prevState: any, data: TEmployee) => {
 
 export const DeleteEmployee = async (id: string) => {
     try {
-        const response = await axios.delete(`${ROOT_URL}/employee/${id}`);
+        await axios.delete(`${ROOT_URL}/employee/${id}`);
         revalidatePath('/')
         return { item: "done", message: "User Updated" };
     } catch (e: any) {
