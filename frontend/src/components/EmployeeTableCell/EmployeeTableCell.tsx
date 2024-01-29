@@ -7,6 +7,7 @@ import { faTrashCan, faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 import { DeleteEmployee } from "@/actions";
 import Image from "next/image";
+import React from "react";
 
 type EmployeeTableCellProps = {
     employee: TEmployee
@@ -24,7 +25,7 @@ const EmployeeTableCell = (props: EmployeeTableCellProps) => {
     }
     return (
         <tr className="table-warning">
-            <td><Image src={props.employee?.photo || ""} alt="User image"/></td>
+            <td><Image src={props.employee?.photo || ""} alt="User image" width={100} height={100}/></td>
             <td>{props.employee.first_name}</td>
             <td>{props.employee.last_name}</td>
             <td>{props.employee.email}</td>

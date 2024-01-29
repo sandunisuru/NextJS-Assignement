@@ -1,7 +1,6 @@
 import styles from "./page.module.css";
 import EmployeeCard from "@/components/EmployeeCard/EmployeeCard";
-import NavBar from "@/components/StyledComponents/Navbar";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { loadData } from "@/actions";
 import { TEmployee } from "@/types/TEmployee";
 import * as _ from 'lodash';
@@ -9,6 +8,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGrip, faList } from "@fortawesome/free-solid-svg-icons";
 import EmployeeTableCell from "@/components/EmployeeTableCell/EmployeeTableCell";
+import React from "react";
 
 type SearchParamProps = {
   searchParams: Record<string, string> | null | undefined;
@@ -16,6 +16,7 @@ type SearchParamProps = {
 
 export default async function Home({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined }; }) {
   const employees: TEmployee[] = await loadData();
+  console.log(employees)
   let isTable = searchParams?.isTable === "true" ? true : false;
 
   return (
@@ -23,8 +24,8 @@ export default async function Home({ searchParams }: { searchParams?: { [key: st
       <Container>
         <Row style={{ textAlign: 'end', marginTop: 10 }}>
           <Col>
-            <Link className="btn btn-primary" href={"/employee/add"}>Add New Employee</Link>
-            <Link className="btn btn-primary ms-1" href={`?isTable=${!isTable}`}>{isTable ? <FontAwesomeIcon icon={faGrip} /> : <FontAwesomeIcon icon={faList} />}</Link>
+            <Link data-testid="add-new-employee" className="btn btn-primary" href={"/employee/add"}>Add New Employee</Link>
+            <Link data-testid="change-view" className="btn btn-primary ms-1" href={`?isTable=${!isTable}`}>{isTable ? <FontAwesomeIcon icon={faGrip} /> : <FontAwesomeIcon icon={faList} />}</Link>
           </Col>
         </Row>
         {!isTable && (

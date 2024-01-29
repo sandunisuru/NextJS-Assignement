@@ -12,7 +12,7 @@ const nextConfig = {
                 pathname: '/api/**',
             },
         ],
-    },
+    }
 };
 
 export default nextConfig;

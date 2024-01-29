@@ -29,7 +29,7 @@ const EmployeeCard: FC<EmployeeCardProps> = (props: EmployeeCardProps) => {
     }
 
     return (
-        <Card>
+        <Card data-testid={`employee-${props.id}-card`}>
             <Card.Img variant="top" src={props.photo} />
             <Card.Body>
                 <Card.Title>{props.first_name} {props.last_name}</Card.Title>

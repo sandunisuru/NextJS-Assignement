@@ -6,6 +6,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import NavBar from "@/components/StyledComponents/Navbar";
+import React from "react";
 config.autoAddCss = false
 
 const inter = Inter({ subsets: ["latin"] });
