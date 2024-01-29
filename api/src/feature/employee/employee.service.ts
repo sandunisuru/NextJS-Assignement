@@ -51,12 +51,12 @@ export class EmployeeService {
         }
     }
 
-    async deleteEmployee(empId: string): Promise<boolean> {
+    async deleteEmployee(empId: string): Promise<string> {
         try {
             await this.employeeModel.findOneAndDelete({ id: empId });
-            return true;
+            return "Employee Deleted";
         } catch (e) {
-            return false;
+            return "Employee Delete Failed";
         }
     }
 }

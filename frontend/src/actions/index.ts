@@ -5,7 +5,7 @@ import axios from "axios";
 import * as _ from 'lodash';
 import { revalidatePath } from "next/cache";
 
-const ROOT_URL = process.env.ROOT_URL;
+const ROOT_URL = process.env.ROOT_URL || "http://localhost:3000";
 
 export const loadData = async (): Promise<TEmployee[]> => {
     try {
