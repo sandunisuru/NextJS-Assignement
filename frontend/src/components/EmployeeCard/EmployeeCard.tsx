@@ -20,7 +20,6 @@ interface EmployeeCardProps {
 const EmployeeCard: FC<EmployeeCardProps> = (props: EmployeeCardProps) => {
     const router = useRouter();
     const handleOnClickEdit = (id: string) => {
-        console.log(id)
         router.push(`/employee/edit/${id}`)
     }
 

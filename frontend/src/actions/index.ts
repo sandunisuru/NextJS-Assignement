@@ -12,7 +12,6 @@ export const loadData = async (): Promise<TEmployee[]> => {
         const response = await axios.get(`${ROOT_URL}/employee`);
         return response.data || [];
     } catch (e) {
-        console.log(e);
         return [];
     }
 }
@@ -20,10 +19,8 @@ export const loadData = async (): Promise<TEmployee[]> => {
 export const getEmployee = async (id: string): Promise<TEmployee | null> => {
     try {
         const response = await axios.get(`${ROOT_URL}/employee/${id}`);
-        console.log(response.data)
         return response.data || [];
     } catch (e) {
-        console.log(e);
         return null;
     }
 }
@@ -58,11 +55,9 @@ export const saveNewEmployee = async (prevState: any, formData: FormData) => {
             return { item: "gender", message: "Gender is mandatory" }
 
         const response = await axios.post(`${ROOT_URL}/employee`, data);
-        console.log(response.data)
         revalidatePath('/')
         return { item: "done", message: "User Added" };
     } catch (e: any) {
-        console.log(e);
         return { item: "error", message: e.message };
     }
 }
@@ -91,11 +86,9 @@ export const EditEmployee = async (prevState: any, data: TEmployee) => {
             return { item: "gender", message: "Gender is mandatory" }
 
         const response = await axios.put(`${ROOT_URL}/employee/${id}`, data);
-        console.log(response.data)
         revalidatePath('/')
         return { item: "done", message: "User Updated" };
     } catch (e: any) {
-        console.log(e);
         return { item: "error", message: e.message };
     }
 }
@@ -103,11 +96,9 @@ export const EditEmployee = async (prevState: any, data: TEmployee) => {
 export const DeleteEmployee = async (id: string) => {
     try {
         const response = await axios.delete(`${ROOT_URL}/employee/${id}`);
-        console.log(response.data)
         revalidatePath('/')
         return { item: "done", message: "User Updated" };
     } catch (e: any) {
-        console.log(e);
         return { item: "error", message: e.message };
     }
 }

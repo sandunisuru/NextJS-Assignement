@@ -15,7 +15,6 @@ type EmployeeTableCellProps = {
 const EmployeeTableCell = (props: EmployeeTableCellProps) => {
     const router = useRouter();
     const handleOnClickEdit = (id: string) => {
-        console.log(id)
         router.push(`/employee/edit/${id}`)
     }
 
