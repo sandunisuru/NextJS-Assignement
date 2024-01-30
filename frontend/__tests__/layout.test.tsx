@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import RootLayout from './layout';
+import RootLayout from '../src/app/layout';
 
 describe('Navbar Component', () => {
     test('Page has a Navbar', () => {

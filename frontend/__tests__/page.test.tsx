@@ -1,16 +1,20 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
-import Home from './page';
+import Home from '../src/app/page';
 import { wait } from '@testing-library/user-event/dist/cjs/utils/index.js';
+import { ReactElement } from 'react';
+import React from 'react';
+import { useRouter } from 'next/navigation';
 
 jest.mock('next/navigation', () => ({
     useRouter: jest.fn().mockReturnValue({
+        push: jest.fn(),
         query: { isTable: 'true' },
     }),
 }));
 
-jest.mock('../actions', () => ({
+jest.mock('../src/actions', () => ({
     loadData: jest.fn().mockResolvedValue([
         {
             id: '15',
@@ -23,6 +27,8 @@ jest.mock('../actions', () => ({
         }
     ]), // Mocking with some information array
 }));
+
+jest.mock('next/link', () => (props: any) => require('react').createElement('div', props))
 
 describe('Home Page', () => {
     test('displays a table when isTable=true', async () => {

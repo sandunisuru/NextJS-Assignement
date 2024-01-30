@@ -24,7 +24,7 @@ const AddEmployeeForm = () => {
     }
 
     return (
-        <form action={formAction} method="post">
+        <form data-testid="add-new-employee-form" action={formAction} method="post">
             {state?.item === "error" && (
                 <div className="alert alert-danger" role="alert">
                     {state.message}
@@ -33,7 +33,7 @@ const AddEmployeeForm = () => {
             <div className="container">
                 <div className="row mb-3">
                     <div className="col-md-3">
-                        <label className="form-label">First Name</label>
+                        <label className="form-label" >First Name</label>
                     </div>
                     <div className="col-md-9">
                         <input type="text" className={`form-control ${state?.item === "first_name" && "is-invalid"}`} name="first_name" />
