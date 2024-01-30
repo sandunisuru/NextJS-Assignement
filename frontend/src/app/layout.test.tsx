@@ -5,13 +5,13 @@ import RootLayout from './layout';
 
 describe('Navbar Component', () => {
     test('Page has a Navbar', () => {
-        const { getByRole } = render(<RootLayout children={undefined} />);
+        const { getByRole } = render(<RootLayout>{<></>}</RootLayout>);
         const navbarElement = getByRole('navigation');
         expect(navbarElement).toBeInTheDocument();
     })
 
     test('Navbar has a text as Employee Manager', () => {
-        render(<RootLayout children={undefined} />);
+        render(<RootLayout>{<></>}</RootLayout>);
         const employeeManagerText = screen.getByText('Employee Manager');
         expect(employeeManagerText).toBeInTheDocument();
     })
